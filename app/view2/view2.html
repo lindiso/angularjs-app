@@ -1,5 +1,57 @@
+<!--
 <p>This is the partial for view 2.</p>
 <p>
   Showing of 'interpolate' filter:
   {{ 'Current version is v%VERSION%.' | interpolate }}
 </p>
+
+<style>
+  .scroll{
+    overflow:scroll;
+    width:200px;
+    height:300px;
+  }
+  .hideHyperlink{
+    text-decoration: none;
+    color: black;
+    text-align: left;
+  }
+  .ul{
+    list-style: none;
+  }
+  .box{
+    display: inline-block;
+    float: left;
+    margin: 30px;
+  }
+
+</style>
+
+<div ng-app="MyApp" ng-controller="View2Ctrl" >
+
+
+    <div class="container">
+      <div class="row box">
+        <span>
+        <ul class="scroll ul">
+          <li ng-repeat="character in data.characters">
+            <a class="hideHyperlink" ng-href="#" ng-click="getImage(character.name)">{{character.name}}</a>
+          </li>
+        </ul>
+          </span>
+
+      </div>
+
+
+{{data2}}
+        <div class="row box">
+
+        <div ng-repeat="character in data">
+          <img ng-src="{{character.thumbnail.path}} + '.' +{{character.thumbnail.extension}}"/>
+        </div>
+        </div>
+
+    </div>
+
+
+</div>-->

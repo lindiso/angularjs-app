@@ -15,22 +15,128 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#!/view1">view1</a></li>
-    <li><a href="#!/view2">view2</a></li>
-  </ul>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
+  <div >
 
-  <div>Angular seed app: v<span app-version></span></div>
+    <style>
+      .scroll{
+        overflow:scroll;
+        width:300px;
+        height:300px;
+      }
+      .scroll2{
+        overflow:scroll;
+        width:350px;
+        height:350px;
+      }
+      .hideHyperlink{
+        text-decoration: none;
+        color: black;
+        text-align: left;
+      }
+      .ul{
+        list-style: none;
+      }
+      .box{
+        display: inline-block;
+        float: left;
+        margin: 30px;
+        border:solid;
+      }
+      .img{
+        height: 200px;
+        border: solid;
+      }
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
+
+      .lbl{
+        height: 500px;
+        width: 500px;
+        border: solid;
+      }
+      .button {
+        display: inline-block;
+        padding: 10px 10px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+        margin-left: 300px;
+
+      }
+
+      .button:hover {background-color: #3e8e41}
+
+      .button:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
+
+      a:focus{
+        background-color: red;
+      }
+
+
+
+    </style>
+
+    <div ng-app="MyApp" ng-controller="View2Ctrl" >
+
+      <br><br><button class="button" ng-click="loadCharacters()">GET CHARACTERS</button>
+
+      <div class="container">
+        <div class="row box">
+        <span>
+        <ul class="scroll ul">
+          <li ng-repeat="character in data.characters">
+            <a class="hideHyperlink" ng-href="#" ng-click="getImage(character.name)">* {{character.name}}</a>
+          </li>
+        </ul>
+          </span>
+
+        </div>
+
+
+        <!--{{data3}}-->
+        <div class="row box scroll2" id="img-div">
+         <label class="">
+          <div ng-repeat="character in data3">
+            <img class="img" id="img" ng-model="character" ng-src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}"/>
+            <br>
+            <label style="font-weight: bold" id="stories">STORIES:</label>
+            <br>
+            <div  id="story" ng-repeat="story in character.stories.items">
+              <div id="stories-div" ng-model="story.name">{{story.name}}</div>
+            </div>
+            <br><br><br>
+            <label style="font-weight: bold" id="comics">COMICS :</label>
+            <div ng-repeat="comic in character.comics.items">
+              <div>{{comic.name}}</div>
+            </div>
+
+          </div>
+         </label>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
